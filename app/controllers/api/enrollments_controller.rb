@@ -1,11 +1,11 @@
 module Api
   class EnrollmentsController < ApplicationController
-    before_action :set_enrollment, only: %i[update show destroy]
-    after_action :create_bills, only: %i[create update]
+    before_action :set_enrollment, only: %i[update show destroy set_bills]
+    after_action :set_bills, only: %i[create]
 
     def index
-      @enrollments = Enrollment.all.limit(params[:count])
-      render json: { page: params[:page], items: @enrollments }.to_json, status: :ok
+      @enrollments = Enrollment.joins(:bills).limit(params[:count])
+      render json: { page: params[:page], items: @enrollments }, status: :ok, include: "bills"
     end
 
     def create
@@ -19,7 +19,7 @@ module Api
     end
 
     def show
-      render json: @enrollment.to_json, status: :ok
+      render json: @enrollment, status: :ok, include: "bills"
     end
 
     def update
@@ -41,13 +41,34 @@ module Api
     private
 
     def enrollment_params
-      params.permit(:amount, :installments, :due_day)
+      params.permit(:amount, :installments, :due_day, :student_id)
     end
 
     def set_enrollment
       @enrollment = Enrollment.find(params[:id])
     end
 
-    def create_bills; end
+    def set_bills
+      i = 0
+      installments = @enrollment.installments
+      bills = []
+
+      while i < installments
+        @bill = Bill.create(
+          {
+            due_date: Time.zone.now + 1.month,
+            enrollment_id: @enrollment.id,
+            amount: @enrollment.amount / installments
+          }
+        )
+        @bill.save!
+
+        bills << @bill
+
+        i += 1
+      end
+
+      @enrollment.update!(bills: bills)
+    end
   end
 end
