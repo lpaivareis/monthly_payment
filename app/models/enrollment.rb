@@ -7,4 +7,7 @@ class Enrollment < ApplicationRecord
   validates :amount,
             :installments,
             :due_day, presence: true
+
+  belongs_to :student
+  has_many :bills
 end
