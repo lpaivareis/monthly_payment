@@ -184,6 +184,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  minitest (~> 5.8, >= 5.8.4)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.3)
