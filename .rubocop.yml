@@ -1,0 +1,18 @@
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - config/**/*
+    - bin/**/*
+    - db/**/*
+    - tmp/**/*
+  DisplayCopNames: true
+  DisplayStyleGuide: true
