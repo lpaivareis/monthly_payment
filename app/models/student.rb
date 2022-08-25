@@ -1,6 +1,8 @@
 class Student < ApplicationRecord
-  validate :name, presence: true
-  validate :document, unique: true
+  validates :name,
+            :cpf,
+            :payment_method, presence: true
+  validates :cpf, uniqueness: { message: "CPF já cadastrado em nossa base!" }
 
   enum payment_method: {
     credit_card: "credit_card",
