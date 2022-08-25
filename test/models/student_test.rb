@@ -3,7 +3,7 @@ require "test_helper"
 class StudentTest < ActiveSupport::TestCase
   test "invalid if name is not present" do
     student = Student.new
-    
+
     assert_not student.valid?
 
     assert student.errors[:name].present?
@@ -11,7 +11,7 @@ class StudentTest < ActiveSupport::TestCase
 
   test "invalid if cpf is not present" do
     student = Student.new
-    
+
     assert_not student.valid?
 
     assert student.errors[:cpf].present?
@@ -19,7 +19,7 @@ class StudentTest < ActiveSupport::TestCase
 
   test "invalid if payment_method is not present" do
     student = Student.new
-    
+
     assert_not student.valid?
 
     assert student.errors[:payment_method].present?
