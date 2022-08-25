@@ -3,7 +3,7 @@ class Bill < ApplicationRecord
             :due_date,
             :status, presence: true
 
-  validates :amount, numericality: { greater_than: 0 }
+  validates_numericality_of :amount, greater_than: 0, message: "Deve ser maior que 0!"
 
   enum status: {
     open: "open",
