@@ -31,7 +31,7 @@ module Api
 
     def destroy
       if @student.destroy
-        render json: { message: "Estudante removido com sucesso!" }.to_json, status: :ok
+        render json: { message: "Estudante removido com sucesso!" }.to_json, status: :no_content
       else
         render json: @student.errors.to_json, status: :unprocessable_entity
       end
