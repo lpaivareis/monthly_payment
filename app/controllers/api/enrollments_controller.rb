@@ -4,8 +4,9 @@ module Api
     after_action :set_bills, only: %i[create]
 
     def index
-      @enrollments = Enrollment.joins(:bills).limit(params[:count])
-      render json: { page: params[:page], items: @enrollments }, status: :ok, include: "bills"
+      @enrollments = Enrollment.joins(:bills).page(params[:page]).limit(params[:count])
+      render json: { page: params[:page], count: @enrollments.count, items: @enrollments }, status: :ok,
+             include: "bills"
     end
 
     def create
@@ -50,25 +51,32 @@ module Api
 
     def set_bills
       i = 0
-      installments = @enrollment.installments
       bills = []
 
-      while i < installments
-        @bill = Bill.create(
-          {
-            due_date: Time.zone.now + 1.month,
-            enrollment_id: @enrollment.id,
-            amount: @enrollment.amount / installments
-          }
-        )
-        @bill.save!
-
+      while i < @enrollment.installments
+        @bill = Bill.create(bill_params)
         bills << @bill
 
         i += 1
       end
 
       @enrollment.update!(bills: bills)
+    end
+
+    def bill_params(_enrollments)
+      {
+        due_date: bill_due_date(enrollments.id),
+        enrollment_id: _enrollment.id,
+        amount: _enrollment.amount / _enrollment.installments
+      }
+    end
+
+    def bill_due_date(id)
+      find_bill(id).present? ? find_bill(id).last.due_date + 1.month : Time.zone.now
+    end
+
+    def find_bill(id)
+      Bill.where(enrollment_id: id)
     end
   end
 end

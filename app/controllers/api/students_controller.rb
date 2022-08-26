@@ -4,7 +4,7 @@ module Api
 
     def index
       @students = Student.all.limit(params[:count])
-      render json: { page: params[:page], items: @students }.to_json, status: :ok
+      render json: { page: params[:page], count: @students.count, items: @students }.to_json, status: :ok
     end
 
     def create
