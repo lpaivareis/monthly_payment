@@ -7,6 +7,9 @@ Style/FrozenStringLiteralComment:
 Style/Documentation:
   Enabled: false
 
+Lint/MissingSuper:
+  Enabled: false
+
 AllCops:
   NewCops: enable
   Exclude:

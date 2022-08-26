@@ -19,7 +19,7 @@ class StudentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show student" do
-    get api_student_url(@student),headers: token_authentication, as: :json
+    get api_student_url(@student), headers: token_authentication, as: :json
     assert_response :success
   end
 
@@ -37,7 +37,7 @@ class StudentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def user_params
-    { name: "lucas", cpf: "092.254.23559", payment_method: :credit_card, birthdate: Date.new(2020, 1, 15)  }
+    { name: "lucas", cpf: "092.254.23559", payment_method: :credit_card, birthdate: Date.new(2020, 1, 15) }
   end
 
   def token_authentication

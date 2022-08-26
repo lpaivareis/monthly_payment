@@ -33,7 +33,7 @@ module Api
 
     def destroy
       if @enrollment.destroy
-        render json: { message: "Matricula removida com sucesso!" }.to_json, status: :ok
+        render json: { message: "Matricula removida com sucesso!" }.to_json, status: :no_content
       else
         render json: @enrollment.errors.to_json, status: :unprocessable_entity
       end
