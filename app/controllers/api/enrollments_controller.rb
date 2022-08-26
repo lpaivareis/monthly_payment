@@ -50,33 +50,7 @@ module Api
     end
 
     def set_bills
-      i = 0
-      bills = []
-
-      while i < @enrollment.installments
-        @bill = Bill.create(bill_params)
-        bills << @bill
-
-        i += 1
-      end
-
-      @enrollment.update!(bills: bills)
-    end
-
-    def bill_params(_enrollments)
-      {
-        due_date: bill_due_date(enrollments.id),
-        enrollment_id: _enrollment.id,
-        amount: _enrollment.amount / _enrollment.installments
-      }
-    end
-
-    def bill_due_date(id)
-      find_bill(id).present? ? find_bill(id).last.due_date + 1.month : Time.zone.now
-    end
-
-    def find_bill(id)
-      Bill.where(enrollment_id: id)
+      CreateBills.call(@enrollment)
     end
   end
 end
