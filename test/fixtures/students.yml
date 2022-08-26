@@ -4,8 +4,19 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one:
+  id: 1
+  name: "Lucas"
+  cpf: "012.151.121-85"
+  payment_method: "credit_card"
+  birthdate: "27/01/2000"
+
 # column: value
 #
-two: {}
+two:
+  id: 3
+  name: "Lucas 3"
+  cpf: "012.151.121-86"
+  payment_method: "credit_card"
+  birthdate: "27/01/2000"
 # column: value

@@ -3,8 +3,7 @@ require "test_helper"
 class EnrollmentsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @enrollment = enrollments(:one)
-    @student = Student.create({ name: "lucas", cpf: "092.254.23559", payment_method: :credit_card,
-                                birthdate: Date.new(2020, 1, 15) })
+    @student = students(:one)
   end
 
   test "should get index" do
