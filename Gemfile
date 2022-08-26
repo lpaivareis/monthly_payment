@@ -12,6 +12,7 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
+gem "kaminari"
 gem "minitest", "~> 5.8", ">= 5.8.4"
 gem "rubocop", "~> 1.35", ">= 1.35.1"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
