@@ -31,5 +31,7 @@ $ bin/rails test
 Você pode fazer a importação da collection para seu postman para facilitar o teste através [deste link](https://www.getpostman.com/collections/fe3f84a29f42bcaab00d).
 
 Para fazer as requisições aos endpoint você deve fazer uma Basic Auth utilizando as credenciais abaixo:
+
 username: admin_ops
+
 password: billing
