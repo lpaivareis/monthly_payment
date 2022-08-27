@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Monthly Payment
 
-Things you may want to cover:
+Está aplicação é um API RESTful escrita em Ruby on Rails para gerenciar pagamentos.
 
-* Ruby version
+### Detalhes
 
-* System dependencies
+Este projeto roda em **Ruby** na versão`3.0.2` utilizando **Rails** `7.0.3`. Se precisar você pode utilizar um gerenciador de versões para facilitar como o [ASDF](https://www.lucascaton.com.br/2020/02/17/instalacao-do-ruby-do-nodejs-no-ubuntu-linux-usando-asdf).
 
-* Configuration
+### Configuração
 
-* Database creation
+Neste projeto, estamos usando o PostgreSQL. Rails usa a role e senha padrão do PostgreSQL, mas se você precisar alterá-los, você pode fazê-lo em database.yml.
 
-* Database initialization
+Para executar siga os passos abaixo:
 
-* How to run the test suite
+```console
+$ bundle install
+$ bin/rails db:create db:migrate
+$ bin/rails server
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Para executar os testes da aplicação:
 
-* Deployment instructions
+```console
+$ bin/rails test
+```
 
-* ...
+### Collection (Postman)
+
+Você pode fazer a importação da collection para seu postman para facilitar o teste através [deste link](https://www.getpostman.com/collections/fe3f84a29f42bcaab00d).
+
+Para fazer as requisições aos endpoint você deve fazer uma Basic Auth utilizando as credenciais abaixo:
+username: admin_ops
+password: billing
