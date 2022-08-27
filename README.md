@@ -10,7 +10,7 @@ Este projeto roda em **Ruby** na versão`3.0.2` utilizando **Rails** `7.0.3`. Se
 
 ### Configuração
 
-Neste projeto, estamos usando o PostgreSQL. Rails usa a role e senha padrão do PostgreSQL, mas se você precisar alterá-los, você pode fazê-lo em database.yml.
+Neste projeto, estamos usando o PostgreSQL. Rails usa a role e senha padrão do PostgreSQL, mas se você precisar alterá-los, você pode fazê-lo em [database.yml](config/database.yml).
 
 Para executar siga os passos abaixo:
 
