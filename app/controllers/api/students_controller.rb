@@ -7,6 +7,10 @@ module Api
       render json: { page: params[:page], count: @students.count, items: @students }.to_json, status: :ok
     end
 
+    def show
+      render json: @student.to_json, status: :ok
+    end
+
     def create
       @student = Student.new(student_params)
 
@@ -15,10 +19,6 @@ module Api
       else
         render json: @student.errors.to_json, status: :unprocessable_entity
       end
-    end
-
-    def show
-      render json: @student.to_json, status: :ok
     end
 
     def update

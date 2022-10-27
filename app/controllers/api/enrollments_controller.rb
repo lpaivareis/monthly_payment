@@ -9,6 +9,10 @@ module Api
              include: "bills"
     end
 
+    def show
+      render json: @enrollment, status: :ok, include: "bills"
+    end
+
     def create
       @enrollment = Enrollment.new(enrollment_params)
 
@@ -17,10 +21,6 @@ module Api
       else
         render json: @enrollment.errors.to_json, status: :unprocessable_entity
       end
-    end
-
-    def show
-      render json: @enrollment, status: :ok, include: "bills"
     end
 
     def update

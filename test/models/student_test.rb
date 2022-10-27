@@ -6,7 +6,7 @@ class StudentTest < ActiveSupport::TestCase
 
     assert_not student.valid?
 
-    assert student.errors[:name].present?
+    assert_predicate student.errors[:name], :present?
   end
 
   test "invalid if cpf is not present" do
@@ -14,7 +14,7 @@ class StudentTest < ActiveSupport::TestCase
 
     assert_not student.valid?
 
-    assert student.errors[:cpf].present?
+    assert_predicate student.errors[:cpf], :present?
   end
 
   test "invalid if payment_method is not present" do
@@ -22,13 +22,13 @@ class StudentTest < ActiveSupport::TestCase
 
     assert_not student.valid?
 
-    assert student.errors[:payment_method].present?
+    assert_predicate student.errors[:payment_method], :present?
   end
 
   test "invalid if cpf already exists in the base" do
     student = Student.create(user_data)
 
-    assert student.valid?
+    assert_predicate student, :valid?
 
     student_copy = Student.create(user_data)
 

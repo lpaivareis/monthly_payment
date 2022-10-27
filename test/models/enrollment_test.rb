@@ -6,7 +6,7 @@ class EnrollmentTest < ActiveSupport::TestCase
 
     assert_not enrollment.valid?
 
-    assert enrollment.errors[:amount].present?
+    assert_predicate enrollment.errors[:amount], :present?
   end
 
   test "invalid if due_day is not present" do
@@ -14,7 +14,7 @@ class EnrollmentTest < ActiveSupport::TestCase
 
     assert_not enrollment.valid?
 
-    assert enrollment.errors[:due_day].present?
+    assert_predicate enrollment.errors[:due_day], :present?
   end
 
   test "invalid if installments is not present" do
@@ -22,7 +22,7 @@ class EnrollmentTest < ActiveSupport::TestCase
 
     assert_not enrollment.valid?
 
-    assert enrollment.errors[:installments].present?
+    assert_predicate enrollment.errors[:installments], :present?
   end
 
   test "invalid if amount is greater than 0" do

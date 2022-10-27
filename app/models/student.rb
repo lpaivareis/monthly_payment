@@ -4,7 +4,7 @@ class Student < ApplicationRecord
             :payment_method, presence: true
   validates :cpf, uniqueness: { message: "CPF já cadastrado em nossa base!" }
 
-  has_one :enrollment
+  has_one :enrollment, dependent: :destroy
 
   enum payment_method: {
     credit_card: "credit_card",

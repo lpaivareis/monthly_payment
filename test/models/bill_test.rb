@@ -6,7 +6,7 @@ class BillTest < ActiveSupport::TestCase
 
     assert_not bill.valid?
 
-    assert bill.errors[:amount].present?
+    assert_predicate bill.errors[:amount], :present?
   end
 
   test "invalid if due_date is not present" do
@@ -14,7 +14,7 @@ class BillTest < ActiveSupport::TestCase
 
     assert_not bill.valid?
 
-    assert bill.errors[:due_date].present?
+    assert_predicate bill.errors[:due_date], :present?
   end
 
   test "invalid if status is not present" do
@@ -22,7 +22,7 @@ class BillTest < ActiveSupport::TestCase
 
     assert_not bill.valid?
 
-    assert bill.errors[:status].present?
+    assert_predicate bill.errors[:status], :present?
   end
 
   test "invalid if amount is greater than 0" do
