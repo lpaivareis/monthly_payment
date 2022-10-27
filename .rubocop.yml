@@ -1,3 +1,7 @@
+require:
+  - rubocop-rails
+  - rubocop-minitest
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
@@ -8,6 +12,9 @@ Style/Documentation:
   Enabled: false
 
 Lint/MissingSuper:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
   Enabled: false
 
 AllCops:
