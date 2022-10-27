@@ -15,6 +15,8 @@ gem "puma", "~> 5.0"
 gem "kaminari"
 gem "minitest", "~> 5.8", ">= 5.8.4"
 gem "rubocop", "~> 1.35", ">= 1.35.1"
+gem "rubocop-minitest", "~> 0.22.2"
+gem "rubocop-rails", "~> 2.17", ">= 2.17.2"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
